@@ -1,0 +1,90 @@
+package ProductManagement;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.sql.*;
+
+public class ProductGUI {
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Product Management Application");
+        frame.getContentPane().setBackground(new Color(255, 255, 128));
+
+        JLabel lblProductManagement = new JLabel("Product Management ");
+        lblProductManagement.setBounds(70, 10, 300, 30);
+        lblProductManagement.setFont(new Font("Serif", Font.BOLD, 20));
+        lblProductManagement.setForeground(new Color(128, 0, 0));
+
+        JLabel productID = new JLabel("Product ID:");
+        productID.setBounds(30, 60, 100, 30);
+        productID.setFont(new Font("Serif", Font.PLAIN, 16));
+        JTextField productIDField = new JTextField();
+        productIDField.setBounds(140, 60, 210, 30);
+
+        JLabel productName = new JLabel("Product Name:");
+        productName.setBounds(30, 100, 100, 30);
+        productName.setFont(new Font("Serif", Font.PLAIN, 16));
+        JTextField productNameField = new JTextField();
+        productNameField.setBounds(140, 100, 210, 30);
+
+        JLabel productPrice = new JLabel("Product Price:");
+        productPrice.setBounds(30, 140, 100, 30);
+        productPrice.setFont(new Font("Serif", Font.PLAIN, 16));
+        JTextField productPriceField = new JTextField();
+        productPriceField.setBounds(140, 140, 210, 30);
+
+        JLabel productQty = new JLabel("Quantity:");
+        productQty.setBounds(30, 180, 100, 30);
+        productQty.setFont(new Font("Serif", Font.PLAIN, 16));
+        JTextField productQtyField = new JTextField();
+        productQtyField.setBounds(140, 180, 210, 30);
+
+        JButton addButton = new JButton("Add");
+        addButton.setBounds(45, 230, 100, 30);
+        addButton.setBackground(new Color(0, 255, 128));
+        addButton.setForeground(Color.WHITE);
+        
+    JButton updateButton = new JButton("Update");
+        updateButton.setBounds(210, 230, 100, 30);
+        updateButton.setBackground(new Color(0, 128, 64));
+        updateButton.setForeground(Color.WHITE);
+
+        JButton deleteButton = new JButton("Delete");
+        deleteButton.setBounds(45, 284, 100, 30);
+        deleteButton.setBackground(new Color(255, 0, 0));
+        deleteButton.setForeground(Color.WHITE);
+
+        JButton searchButton = new JButton("Search");
+        searchButton.setBounds(210, 284, 100, 30);
+        searchButton.setBackground(new Color(128, 255, 0));
+        searchButton.setForeground(Color.WHITE);
+
+       
+        frame.getContentPane().setLayout(null);
+        frame.getContentPane().add(lblProductManagement);
+        frame.getContentPane().add(productID);
+        frame.getContentPane().add(productIDField);
+        frame.getContentPane().add(productName);
+        frame.getContentPane().add(productNameField);
+        frame.getContentPane().add(productPrice);
+        frame.getContentPane().add(productPriceField);
+        frame.getContentPane().add(productQty);
+        frame.getContentPane().add(productQtyField);
+        frame.getContentPane().add(addButton);
+        frame.getContentPane().add(updateButton);
+        frame.getContentPane().add(deleteButton);
+        frame.getContentPane().add(searchButton);
+        
+
+        HandleEvent handleEvent = new HandleEvent(productIDField, productNameField, productPriceField, productQtyField,
+                addButton, updateButton, deleteButton, searchButton);
+        addButton.addActionListener(handleEvent);
+        updateButton.addActionListener(handleEvent);
+        deleteButton.addActionListener(handleEvent);
+        searchButton.addActionListener(handleEvent);
+
+        frame.setSize(400, 400);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+    }
+}
